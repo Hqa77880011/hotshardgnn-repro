@@ -1,0 +1,19 @@
+{
+  "data": "data/products-t",
+  "device": "cuda",
+  "policy": "hotshard",
+  "partition": "metis",
+  "partition_seed": 17,
+  "seed": 7,
+  "batch_size": 256,
+  "hidden": 128,
+  "heads": 2,
+  "fanouts": [10, 5],
+  "learning_rate": 0.001,
+  "warmup_windows": 3,
+  "measurement_windows": 12,
+  "window_batches": 2000,
+  "budget_bytes": 4294967296,
+  "cpu_threads": 4,
+  "controller": {}
+}

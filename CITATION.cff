@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this independent reference implementation, cite this software and the original papers listed in docs/REPRODUCTION.md."
+type: software
+title: "HotShardGNN: executable reference reproduction"
+version: 0.1.0
+authors:
+  - family-names: Hu
+    given-names: Qinao
+license: MIT
+abstract: "A reference controller and PyTorch distributed backend reconstructed from the supplied HotShardGNN manuscript. This is not the original DGL/TGL prototype."

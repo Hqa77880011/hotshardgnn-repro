@@ -1,0 +1,26 @@
+name: correctness
+on: [push, pull_request]
+jobs:
+  cpu-reference:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: python -m pip install torch --index-url https://download.pytorch.org/whl/cpu
+      - run: python -m pip install -e '.[dev,metis]'
+      - run: python -m pytest -q
+      - run: python -m hotshardgnn.data synthetic --output data/synthetic
+      - run: torchrun --standalone --nproc_per_node=2 -m hotshardgnn.verify_distributed --data data/synthetic
+      - run: torchrun --standalone --nproc_per_node=2 -m hotshardgnn.train --config configs/smoke.json --policy static --output outputs/static
+      - run: torchrun --standalone --nproc_per_node=2 -m hotshardgnn.train --config configs/smoke.json --policy hotshard --output outputs/hotshard
+      - run: python -m hotshardgnn.report outputs/static outputs/hotshard --output outputs/report
+      - uses: actions/upload-artifact@v4
+        with:
+          name: smoke-measurements
+          path: |
+            outputs/**/summary.json
+            outputs/**/windows.jsonl
+            outputs/report/*

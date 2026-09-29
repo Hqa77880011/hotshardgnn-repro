@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hotshardgnn-repro"
+version = "0.1.0"
+description = "Executable reference reproduction of migration-budgeted hotspot placement"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.24,<3", "torch>=2.4,<3", "scipy>=1.10,<2", "scikit-learn>=1.3,<2"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<9"]
+metis = ["pymetis>=2025.2,<2026"]
+plots = ["matplotlib>=3.8,<4"]
+products = ["ogb>=1.3.6,<2"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"

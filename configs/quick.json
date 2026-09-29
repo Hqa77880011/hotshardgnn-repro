@@ -1,0 +1,19 @@
+{
+  "data": "data/wikipedia",
+  "device": "cpu",
+  "policy": "hotshard",
+  "partition": "metis",
+  "partition_seed": 17,
+  "seed": 7,
+  "batch_size": 64,
+  "hidden": 16,
+  "heads": 2,
+  "fanouts": [3, 3],
+  "learning_rate": 0.001,
+  "warmup_windows": 3,
+  "measurement_windows": 4,
+  "window_batches": 2,
+  "budget_bytes": 16384,
+  "cpu_threads": 1,
+  "controller": {}
+}
