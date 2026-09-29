@@ -213,11 +213,6 @@ tests/                       控制器、协议和采样测试
 .github/workflows/ci.yml      Linux CPU 检查流程
 ```
 
-## 实现范围
-
-控制器按论文公式和 Algorithm 1 实现。训练后端采用 PyTorch DDP 与 Gloo，模型采用独立编写的时间注意力和 GraphSAGE；论文描述的 DGL/TGL 原型及完整实验配置未随稿件提供。当前后端迁移节点特征，采样索引和边特征保留在各 rank。
-
-论文未给出的参数、Products-T 时间生成规则和实现差异统一列在 [复现说明](docs/REPRODUCTION.md)。仓库已做基础功能检查，完整集群实验尚未执行；检查范围见 [验证记录](docs/VALIDATION.md)。
 
 ## 许可与引用
 
