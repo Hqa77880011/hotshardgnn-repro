@@ -219,3 +219,15 @@ tests/                       控制器、协议和采样测试
 代码采用 [MIT License](LICENSE)。数据集遵循各自的许可要求。
 
 引用本实现可使用 [CITATION.cff](CITATION.cff)。实验中使用 JODIE、TGAT、GraphSAGE 或 OGB 时，请同时引用对应工作，链接见 [复现说明](docs/REPRODUCTION.md)。
+
+## Fixed reproduction setting
+
+Two CPU/Gloo workers, hash ownership, immutable feature migration, causal temporal attention; smoke.json budgets with paired static/hotshard runs.
+
+The checked-in entry point fixes data seeds, methods, budgets and output paths. Inspect its commands without starting any computation:
+
+```bash
+python reproduce.py --plan
+```
+
+Remove `--plan` to execute the registered pipeline in a fresh output directory. The entry point calls the existing implementation; it does not insert paper results. Installation uses the package instructions above.
